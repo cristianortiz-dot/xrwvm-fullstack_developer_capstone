@@ -1,0 +1,11 @@
+{
+  "reviews": [
+    {"id": 1, "name": "Ana Torres", "dealership": 3, "review": "Excellent service and friendly staff. Highly recommended!", "purchase": true, "purchase_date": "02/10/2024", "car_make": "Mercedes", "car_model": "E-Class", "car_year": 2023},
+    {"id": 2, "name": "Carlos Ramirez", "dealership": 3, "review": "Great experience buying my first SUV here.", "purchase": true, "purchase_date": "05/22/2024", "car_make": "NISSAN", "car_model": "XTRAIL", "car_year": 2023},
+    {"id": 3, "name": "Maria Gomez", "dealership": 4, "review": "Good prices but the wait was a bit long.", "purchase": true, "purchase_date": "01/12/2024", "car_make": "Toyota", "car_model": "Corolla", "car_year": 2023},
+    {"id": 4, "name": "Diego Lopez", "dealership": 5, "review": "Excellent Dealership. Highly Recommended.", "purchase": true, "purchase_date": "01/12/2023", "car_make": "NISSAN", "car_model": "XTRAIL", "car_year": 2023},
+    {"id": 5, "name": "Laura Fernandez", "dealership": 29, "review": "Fantastic services, the staff went above and beyond to help me find the right car.", "purchase": true, "purchase_date": "03/18/2024", "car_make": "Kia", "car_model": "Sorento", "car_year": 2023},
+    {"id": 6, "name": "Julian Ortiz", "dealership": 29, "review": "The car had some issues after purchase and support was slow to respond.", "purchase": true, "purchase_date": "04/02/2024", "car_make": "Audi", "car_model": "A4", "car_year": 2023},
+    {"id": 7, "name": "Sofia Castro", "dealership": 38, "review": "Average experience, nothing special but nothing bad either.", "purchase": false, "purchase_date": "06/09/2024", "car_make": "Toyota", "car_model": "Camry", "car_year": 2023}
+  ]
+}

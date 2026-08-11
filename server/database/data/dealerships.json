@@ -1,0 +1,20 @@
+{
+  "dealerships": [
+    {"id": 1, "city": "Chicago", "state": "Illinois", "st": "IL", "address": "1 Michigan Ave", "zip": "60601", "lat": 41.8781, "long": -87.6298, "short_name": "Best Cars Chicago", "full_name": "Best Cars Dealership - Chicago"},
+    {"id": 2, "city": "Dallas", "state": "Texas", "st": "TX", "address": "253 Hanson Junction", "zip": "75216", "lat": 32.7767, "long": -96.7970, "short_name": "Best Cars Dallas", "full_name": "Best Cars Dealership - Dallas"},
+    {"id": 3, "city": "San Francisco", "state": "California", "st": "CA", "address": "9 Harborview Rd", "zip": "94110", "lat": 37.7749, "long": -122.4194, "short_name": "Fix San Car Dealership", "full_name": "Fix San Car Dealership - San Francisco"},
+    {"id": 4, "city": "El Paso", "state": "Texas", "st": "TX", "address": "3 Nova Court", "zip": "88563", "lat": 31.7619, "long": -106.4850, "short_name": "Holdlamis Car Dealership", "full_name": "Holdlamis Car Dealership - El Paso"},
+    {"id": 5, "city": "Baltimore", "state": "Maryland", "st": "MD", "address": "93 Golf Course Pass", "zip": "21203", "lat": 39.2904, "long": -76.6122, "short_name": "Regrant Car Dealership", "full_name": "Regrant Car Dealership - Baltimore"},
+    {"id": 6, "city": "Minneapolis", "state": "Minnesota", "st": "MN", "address": "6337 Butternut Crossing", "zip": "55402", "lat": 44.9778, "long": -93.2650, "short_name": "Temp Car Dealership", "full_name": "Temp Car Dealership - Minneapolis"},
+    {"id": 7, "city": "Birmingham", "state": "Alabama", "st": "AL", "address": "9477 Twin Pines Center", "zip": "35202", "lat": 33.5186, "long": -86.8104, "short_name": "Sub-Ex Car Dealership", "full_name": "Sub-Ex Car Dealership - Birmingham"},
+    {"id": 8, "city": "Pueblo", "state": "Colorado", "st": "CO", "address": "9 Cambridge Park", "zip": "81010", "lat": 38.2544, "long": -104.6091, "short_name": "Job Car Dealership", "full_name": "Job Car Dealership - Pueblo"},
+    {"id": 9, "city": "Washington", "state": "District of Columbia", "st": "DC", "address": "108 Memorial Pass", "zip": "20005", "lat": 38.9072, "long": -77.0369, "short_name": "Alphazo Car Dealership", "full_name": "Alphazo Car Dealership - Washington"},
+    {"id": 12, "city": "Silver Spring", "state": "Maryland", "st": "MD", "address": "4 Fairview Lane", "zip": "20904", "lat": 39.0028, "long": -77.0296, "short_name": "Tin Car Dealership", "full_name": "Tin Car Dealership - Silver Spring"},
+    {"id": 13, "city": "Baltimore", "state": "Maryland", "st": "MD", "address": "6 Fair Oaks Drive", "zip": "21203", "lat": 39.2904, "long": -76.6122, "short_name": "Y-Solowarm Car Dealership", "full_name": "Y-Solowarm Car Dealership - Baltimore"},
+    {"id": 21, "city": "Philadelphia", "state": "Pennsylvania", "st": "PA", "address": "2 Redwing Court", "zip": "19103", "lat": 39.9526, "long": -75.1652, "short_name": "Stronghold Car Dealership", "full_name": "Stronghold Car Dealership - Philadelphia"},
+    {"id": 29, "city": "Topeka", "state": "Kansas", "st": "KS", "address": "288 Larry Place", "zip": "66603", "lat": 39.0473, "long": -95.6752, "short_name": "Bytecard Car Dealership", "full_name": "Bytecard Car Dealership - Topeka"},
+    {"id": 34, "city": "Silver Spring", "state": "Maryland", "st": "MD", "address": "8 Golf View Hill", "zip": "20904", "lat": 39.0028, "long": -77.0296, "short_name": "Gembucket Car Dealership", "full_name": "Gembucket Car Dealership - Silver Spring"},
+    {"id": 38, "city": "Wichita", "state": "Kansas", "st": "KS", "address": "77 Prairie Rose Ave", "zip": "67202", "lat": 37.6872, "long": -97.3301, "short_name": "Prairie Land Car Dealership", "full_name": "Prairie Land Car Dealership - Wichita"},
+    {"id": 41, "city": "Baltimore", "state": "Maryland", "st": "MD", "address": "9 Sherman Hill", "zip": "21275", "lat": 39.2904, "long": -76.6122, "short_name": "Tres-Zap Car Dealership", "full_name": "Tres-Zap Car Dealership - Baltimore"}
+  ]
+}

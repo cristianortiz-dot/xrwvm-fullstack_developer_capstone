@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dealerships | Best Cars</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <style>
+    table.dealers { width: 100%; border-collapse: collapse; background: white; margin-top: 20px;}
+    table.dealers th, table.dealers td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    table.dealers th { background: var(--brand-dark); color: white; }
+    table.dealers tr:nth-child(even) { background: #f8f9fa; }
+    .state-filter { margin-top: 20px; }
+    .review-icon { font-size: 1.4rem; text-decoration: none; }
+    #loginModal, #registerModal {
+      display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.45); align-items:center; justify-content:center; z-index: 999;
+    }
+    .modal-box { background:white; border-radius:10px; padding:30px; width:320px; text-align:center; }
+    .modal-box input { width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:4px; }
+    .modal-box button { margin-top:10px; padding:8px 20px; border:none; border-radius:4px; background: var(--brand-teal); color:white; cursor:pointer;}
+    .modal-box a { display:block; margin-top:10px; color: var(--brand-teal); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="brand" href="/">Dealerships</a>
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="/about/">About Us</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="user-info" id="userInfo">
+      <a href="#" id="loginLink" onclick="showLogin(); return false;">Login</a>
+      <a href="/register/" id="registerLink">Register</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <img src="/static/dealership_hero.jpg" alt="Best Cars Dealership">
+  </div>
+
+  <div class="container-section">
+    <h1>Welcome to our Dealerships</h1>
+
+    <div class="state-filter">
+      <label for="stateSelect"><strong>Filter by State:</strong></label>
+      <select id="stateSelect" onchange="filterByState()">
+        <option value="All">All States</option>
+      </select>
+    </div>
+
+    <table class="dealers">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Dealer Name</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>Zip</th>
+          <th>State</th>
+          <th id="reviewHeader" style="display:none;">Review Dealer</th>
+        </tr>
+      </thead>
+      <tbody id="dealersBody">
+        <tr><td colspan="6">Loading dealers...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Login modal -->
+  <div id="loginModal">
+    <div class="modal-box">
+      <h3>Login</h3>
+      <input type="text" id="loginUsername" placeholder="Username">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <div>
+        <button onclick="doLogin()">Login</button>
+        <button onclick="hideLogin()" style="background:#888;">Cancel</button>
+      </div>
+      <a href="/register/">Register Now</a>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 Best Cars Dealership. All rights reserved.</footer>
+
+  <script>
+    const djangoUrl = window.location.origin;
+
+    function showLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+    function hideLogin() { document.getElementById('loginModal').style.display = 'none'; }
+
+    async function doLogin() {
+      const userName = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      const res = await fetch(djangoUrl + "/djangoapp/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userName, password }),
+      });
+      const json = await res.json();
+      if (json.status === "Authenticated") {
+        sessionStorage.setItem('username', json.userName);
+        window.location.reload();
+      } else {
+        alert("The user could not be authenticated.");
+      }
+    }
+
+    async function doLogout() {
+      const res = await fetch(djangoUrl + "/djangoapp/logout", { method: "GET" });
+      const json = await res.json();
+      sessionStorage.removeItem('username');
+      window.location.reload();
+    }
+
+    function renderUserInfo() {
+      const username = sessionStorage.getItem('username');
+      const userInfo = document.getElementById('userInfo');
+      if (username) {
+        userInfo.innerHTML = `<span>${username}</span> <a href="#" onclick="doLogout(); return false;">Logout</a>`;
+        document.getElementById('reviewHeader').style.display = '';
+      } else {
+        userInfo.innerHTML = `<a href="#" onclick="showLogin(); return false;">Login</a> <a href="/register/">Register</a>`;
+      }
+    }
+
+    let allDealers = [];
+
+    async function loadDealers(state) {
+      const endpoint = state && state !== "All"
+        ? "/djangoapp/get_dealers/" + state
+        : "/djangoapp/get_dealers";
+      const res = await fetch(djangoUrl + endpoint);
+      const json = await res.json();
+      const dealers = json.dealers || [];
+      const tbody = document.getElementById('dealersBody');
+      const loggedIn = !!sessionStorage.getItem('username');
+      if (!dealers.length) {
+        tbody.innerHTML = '<tr><td colspan="6">No dealers found.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = dealers.map(d => `
+        <tr>
+          <td>${d.id}</td>
+          <td><a href="/dealer/${d.id}">${d.short_name}</a></td>
+          <td>${d.city}</td>
+          <td>${d.address}</td>
+          <td>${d.zip}</td>
+          <td>${d.state}</td>
+          ${loggedIn ? `<td><a class="review-icon" href="/postreview/${d.id}" title="Write a review">&#128172;</a></td>` : ''}
+        </tr>
+      `).join('');
+
+      if (allDealers.length === 0) {
+        allDealers = dealers;
+        const select = document.getElementById('stateSelect');
+        const states = [...new Set(dealers.map(d => d.state))].sort();
+        states.forEach(s => {
+          const opt = document.createElement('option');
+          opt.value = s; opt.textContent = s;
+          select.appendChild(opt);
+        });
+      }
+    }
+
+    function filterByState() {
+      const state = document.getElementById('stateSelect').value;
+      loadDealers(state);
+    }
+
+    renderUserInfo();
+    loadDealers("All");
+  </script>
+</body>
+</html>

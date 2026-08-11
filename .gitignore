@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+djangoenv/
+venv/
+.env
+
+# Node
+node_modules/
+npm-debug.log*
+server/frontend/build/
+
+# OS / editor
+.DS_Store
+.vscode/
+*.log
+
+# Static collected
+staticfiles/
