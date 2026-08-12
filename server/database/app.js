@@ -34,7 +34,7 @@ const dealerships_data = JSON.parse(
 );
 
 mongoose
-  .connect('mongodb://db/dealershipsDB', {})
+  .connect(process.env.MONGO_URL || 'mongodb://db/dealershipsDB', {})
   .then(async () => {
     console.log('Connected to MongoDB');
     try {
