@@ -104,8 +104,8 @@ app.get('/fetchDealer/:id', async (req, res) => {
 });
 
 // Insertar una nueva reseña
-app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
-  const data = JSON.parse(req.body);
+app.post('/insert_review', async (req, res) => {
+  const data = req.body;
   const documents = await Reviews.find().sort({ id: -1 });
   let new_id = documents.length > 0 ? documents[0].id + 1 : 1;
 
