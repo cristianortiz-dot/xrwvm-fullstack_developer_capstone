@@ -107,5 +107,9 @@ SENTIMENT_ANALYZER_URL = os.environ.get(
     'SENTIMENT_ANALYZER_URL', 'http://localhost:5050/'
 )
 
-ALLOWED_HOSTS += ['consultorcri-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
-CSRF_TRUSTED_ORIGINS += ['https://consultorcri-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
+ALLOWED_HOSTS += [
+    'consultorcri-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
+CSRF_TRUSTED_ORIGINS += [
+    'https://consultorcri-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
