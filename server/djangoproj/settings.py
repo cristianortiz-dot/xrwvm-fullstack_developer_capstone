@@ -16,12 +16,9 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
-# Añade la URL pública de tu aplicación (Theia / Code Engine / Cloud Run, etc.)
-# ALLOWED_HOSTS += ['<your application URL here>']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.onrender.com']
 
-CSRF_TRUSTED_ORIGINS = []
-# CSRF_TRUSTED_ORIGINS += ['https://<your application URL here>']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
