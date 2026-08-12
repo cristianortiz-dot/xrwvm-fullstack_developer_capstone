@@ -1,0 +1,9 @@
+{
+  "short_name": "Best Cars",
+  "name": "Best Cars Dealership",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#17a2a2",
+  "background_color": "#ffffff"
+}
